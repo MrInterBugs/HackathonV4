@@ -1,10 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:flutter/services.dart';
+import 'components/hamburger.dart';
 import 'screens/studentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   // run authenitcation check here
@@ -19,7 +18,7 @@ void main() {
       '/': (context) => Home(),
       '/teacherView': (context) => TeacherHome(),
       '/studentView': (context) => StudentView(),
-      '/authenticate': (context) => Auth()
+      '/authenticate': (context) => Auth(),
     },
   ));
 }
@@ -27,6 +26,10 @@ void main() {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text('centered thingy'));
+    return Scaffold(
+      appBar: AppBar(title: Text("Home Page"),),
+        body: Text('centered thingy'),
+        drawer: Hamburger(),
+    );
   }
 }

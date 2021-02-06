@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 
 import 'SignIn.dart';
+import 'UserInfo.dart';
 
 class Auth extends StatelessWidget {
   Auth({
@@ -44,8 +45,13 @@ class Auth extends StatelessWidget {
               onTap: () {
                 signInWithGoogle().then((result) {
                   if (result != null) {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/teacherView', (route) => false);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return UserInfo();
+                        },
+                      ),
+                    );
                   }
                 });
               },
