@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Hamburger extends StatelessWidget {
+  Hamburger({
+    Key key,
+  }) : super(key: key);
+
   @override
-  Widget Build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       width: 150,
       // Add a ListView to the drawer. This ensures the user can scroll
@@ -30,10 +34,7 @@ class Hamburger extends StatelessWidget {
             ListTile(
               title: Text('Teachers View'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TeacherHome()),
-                );
+                Navigator.pushNamed(context, '/teacherView');
               },
             ),
             ListTile(
@@ -42,7 +43,7 @@ class Hamburger extends StatelessWidget {
                 // Update the state of the app.
                 // ...
                 // Then close the drawer.
-                Navigator.pushReplacementNamed(context, '/studentView');
+                Navigator.pushNamed(context, '/studentView');
               },
             ),
             ListTile(
