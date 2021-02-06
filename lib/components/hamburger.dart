@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app/screens/SignIn.dart';
 
 class Hamburger extends StatelessWidget {
   Hamburger({
@@ -66,12 +68,10 @@ class Hamburger extends StatelessWidget {
             ),
             // Logout Button
             ListTile(
-              title: Text('Login'),
+              title: Text('Logout'),
               onTap: () {
-                // Update the state of the app.
-                // ...
-                // Then close the drawer. and return to auth screen
-                Navigator.pushReplacementNamed(context, '/authenticate');
+                signOutGoogle();
+                SystemNavigator.pop();
               },
             ),
 
