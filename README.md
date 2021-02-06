@@ -1,6 +1,6 @@
-# covid_19_teacher_support
+# flutter_app
 
-An application to give teachers and perants help managing their pupils.
+A new Flutter application.
 
 ## Getting Started
 

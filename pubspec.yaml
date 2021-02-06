@@ -1,5 +1,5 @@
-name: covid_19_teacher_support
-description: An application to give teachers and perants help managing their pupils.
+name: flutter_app
+description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
