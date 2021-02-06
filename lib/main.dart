@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/screens/LoginPage.dart';
 import 'screens/TeacherHome.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -161,12 +162,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               ListTile(
-                title: Text('Logout'),
+                title: Text('Login'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  // Then close the drawer.
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 },
               ),
             ],
