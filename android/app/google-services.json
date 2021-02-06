@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "847511712414",
+    "firebase_url": "https://education-app-hackaway-v4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "education-app-hackaway-v4",
+    "storage_bucket": "education-app-hackaway-v4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847511712414:android:7737fbdf825ecc12d2818f",
+        "android_client_info": {
+          "package_name": "com.rhulcsprojects.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847511712414-a3j9jhvtjdlo7v19mnsahn8d3ektr0og.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCID9DiSEb3Rw9SKpzuiUtLygQaVSKluu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847511712414-a3j9jhvtjdlo7v19mnsahn8d3ektr0og.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
