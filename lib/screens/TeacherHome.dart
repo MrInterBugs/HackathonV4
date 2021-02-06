@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/components/hamburger.dart';
+import 'package:flutter_app/components/Hamburger.dart';
 
 class TeacherHome extends StatelessWidget {
   TeacherHome({
