@@ -1,184 +1,34 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+
+import 'screens/studentView.dart';
 import 'package:flutter_app/screens/LoginPage.dart';
 import 'screens/TeacherHome.dart';
+import 'screens/Auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() {
-  runApp(MyApp());
+  // run authenitcation check here
+  final bool isAuthenticated = false;
+  runApp(MaterialApp(
+    title: 'COVID system',
+    // Start the app with the "/" named route. In this case, the app starts
+    // on the FirstScreen widget.
+    //
+    initialRoute: isAuthenticated ? '/' : '/authenticate',
+    routes: {
+      '/': (context) => Home(),
+      '/teacherView': (context) => TeacherHome(),
+      '/studentView': (context) => StudentView(),
+      '/authenticate': (context) => Auth()
+    },
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Covid 19 Education Support App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Home page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-
-
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  static const platform = const MethodChannel('com.rhulcsprojects.flutter_app/time');
-  String _currentTime = 'Press the button to get the time.';
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  Future<void> _getCurrentTime() async {
-    String currentTime;
-    try {
-      final String result = await platform.invokeMethod('getCurrentTime');
-      currentTime = 'Time now is $result .';
-    } on PlatformException catch (e) {
-      currentTime = "Failed to get time: '${e.message}'.";
-    }
-
-    setState(() {
-      _currentTime = currentTime;
-    });
-  }
-
-  // Set default `_initialized` and `_error` state to false
-  bool _initialized = false;
-  bool _error = false;
-
-  // Define an async function to initialize FlutterFire
-  void initializeFlutterFire() async {
-    try {
-      // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch(e) {
-      // Set `_error` state to true if Firebase initialization fails
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    initializeFlutterFire();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            ElevatedButton(
-              child: Text('Get the current time!'),
-              onPressed: _getCurrentTime,
-            ),
-            Text(_currentTime),
-          ],
-        ),
-      ),
-      drawer: Container(
-        width: 150,
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text('Menu'),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-              ),
-              ListTile(
-                title: Text('Home Page'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Teachers View'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TeacherHome()),
-                  );
-                },
-              ),
-              ListTile(
-                title: Text('Messages'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  // Then close the drawer.
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Timetable'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  // Then close the drawer.
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Login'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return Scaffold(body: Text('centered thingy'));
   }
 }
