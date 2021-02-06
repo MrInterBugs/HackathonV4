@@ -18,10 +18,10 @@ class TeacherHome extends StatelessWidget {
         itemCount: className.length,
         itemBuilder: (context, index) {
           return ElevatedButton(
-                onPressed: () {},
-                child: Text('${className[index]}'),
-              );
-          },
+            onPressed: () {},
+            child: Text('${className[index]}'),
+          );
+        },
       ),
       drawer: Container(
         width: 150,
@@ -39,12 +39,14 @@ class TeacherHome extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
+              // Home
               ListTile(
                 title: Text('Home Page'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/');
                 },
               ),
+              // Teachers View
               ListTile(
                 title: Text('Teachers View'),
                 onTap: () {
@@ -52,6 +54,15 @@ class TeacherHome extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => TeacherHome()),
                   );
+                },
+              ),
+              ListTile(
+                title: Text('Student View'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                  // Then close the drawer.
+                  Navigator.pushReplacementNamed(context, '/studentView');
                 },
               ),
               ListTile(
@@ -72,13 +83,14 @@ class TeacherHome extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
+              // Logout Button
               ListTile(
                 title: Text('Logout'),
                 onTap: () {
                   // Update the state of the app.
                   // ...
-                  // Then close the drawer.
-                  Navigator.pop(context);
+                  // Then close the drawer. and return to auth screen
+                  Navigator.pushReplacementNamed(context, '/authenticate');
                 },
               ),
             ],
