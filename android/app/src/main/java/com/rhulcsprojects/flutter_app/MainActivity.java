@@ -1,13 +1,11 @@
 package com.rhulcsprojects.flutter_app;
 
 import androidx.annotation.NonNull;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends FlutterActivity {
     private static final String CHANNEL = "com.rhulcsprojects.flutter_app/time";

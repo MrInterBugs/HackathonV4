@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'screens/TeacherHome.dart';
 
 void main() {
   runApp(MyApp());
@@ -152,19 +153,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 title: Text('Home Page'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  // Then close the drawer.
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Homework'),
+                title: Text('Teachers View'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  // Then close the drawer.
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TeacherHome()),
+                  );
                 },
               ),
               ListTile(
@@ -177,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               ListTile(
-                title: Text('Timetable`'),
+                title: Text('Timetable'),
                 onTap: () {
                   // Update the state of the app.
                   // ...
