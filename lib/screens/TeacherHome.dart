@@ -7,19 +7,21 @@ class TeacherHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final className = List<String>.generate(5, (i) => "Class $i");
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text("Teacher View"),
       ),
-      body: Stack(
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {},
-            child: Text("Fake Class"),
-          )
-        ],
+      body: ListView.builder(
+        itemCount: className.length,
+        itemBuilder: (context, index) {
+          return ElevatedButton(
+                onPressed: () {},
+                child: Text('${className[index]}'),
+              );
+          },
       ),
       drawer: Container(
         width: 150,
