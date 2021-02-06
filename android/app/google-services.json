@@ -15,6 +15,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "847511712414-455da2b069jij09u2fg20motdi7nd8uk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhulcsprojects.flutter_app",
+            "certificate_hash": "46822b0511e99c4d965cfb9b24480ff8a91ccf85"
+          }
+        },
+        {
+          "client_id": "847511712414-ft2mi5qej7ub5npjpmu8p6g5r19pv4bt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhulcsprojects.flutter_app",
+            "certificate_hash": "08a4559179961ca262dce392957ec826524ea34a"
+          }
+        },
+        {
+          "client_id": "847511712414-gehped6aug1np9m6vo7kndea6k33vb3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhulcsprojects.flutter_app",
+            "certificate_hash": "966535b95eb380ad3abcaa959eab145df00cc3dd"
+          }
+        },
+        {
+          "client_id": "847511712414-qc9i84khj8062lmibse14tnihuf2roav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhulcsprojects.flutter_app",
+            "certificate_hash": "1f1518b3c084897791d1998a1dd0018d5168a17a"
+          }
+        },
+        {
           "client_id": "847511712414-a3j9jhvtjdlo7v19mnsahn8d3ektr0og.apps.googleusercontent.com",
           "client_type": 3
         }

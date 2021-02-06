@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/components/hamburger.dart';
+import 'package:flutter_app/components/Hamburger.dart';
 
 class TeacherHome extends StatelessWidget {
   TeacherHome({
@@ -9,6 +9,7 @@ class TeacherHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final className = List<String>.generate(5, (i) => "Class $i");
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by

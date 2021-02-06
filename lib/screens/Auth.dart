@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 
+import 'SignIn.dart';
+
 class Auth extends StatelessWidget {
   Auth({
     Key key,
@@ -40,9 +42,12 @@ class Auth extends StatelessWidget {
             // Nice button go brrrr
             child: InkWell(
               onTap: () {
-                // pushed route until we cannot go backwards
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/teacherView', (route) => false);
+                signInWithGoogle().then((result) {
+                  if (result != null) {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/teacherView', (route) => false);
+                  }
+                });
               },
               borderRadius: BorderRadius.circular(96.0),
               child: Ink(

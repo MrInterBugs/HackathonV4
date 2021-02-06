@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-
 import 'screens/studentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   // run authenitcation check here

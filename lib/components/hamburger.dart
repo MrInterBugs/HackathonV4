@@ -66,7 +66,7 @@ class Hamburger extends StatelessWidget {
             ),
             // Logout Button
             ListTile(
-              title: Text('Logout'),
+              title: Text('Login'),
               onTap: () {
                 // Update the state of the app.
                 // ...
@@ -74,6 +74,7 @@ class Hamburger extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/authenticate');
               },
             ),
+
           ],
         ),
       ),
