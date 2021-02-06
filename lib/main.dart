@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +53,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  static const platform = const MethodChannel('com.rhulcsprojects.flutter_app/time');
+  String _currentTime = 'Press the button to get the time.';
 
   void _incrementCounter() {
     setState(() {
@@ -60,6 +64,21 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+
+  Future<void> _getCurrentTime() async {
+    String currentTime;
+    try {
+      final String result = await platform.invokeMethod('getCurrentTime');
+      currentTime = 'Time now is $result .';
+    } on PlatformException catch (e) {
+      currentTime = "Failed to get time: '${e.message}'.";
+    }
+
+    setState(() {
+      _currentTime = currentTime;
     });
   }
 
@@ -106,6 +125,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(
+              child: Text('Get the current time!'),
+              onPressed: _getCurrentTime,
+            ),
+            Text(_currentTime),
           ],
         ),
       ),
