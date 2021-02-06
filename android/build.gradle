@@ -1,3 +1,5 @@
+apply plugin:'base'
+
 buildscript {
     repositories {
         google()
@@ -6,6 +8,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.google.gms:google-services:4.3.5'
     }
 }
 
@@ -22,8 +25,4 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(':app')
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
