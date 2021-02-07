@@ -100,7 +100,6 @@ class UserInfo extends StatelessWidget {
 
         ),
       ),
-      drawer: Hamburger(),
     );
   }
 }
