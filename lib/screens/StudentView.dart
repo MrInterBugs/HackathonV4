@@ -35,7 +35,7 @@ class StudentView extends StatelessWidget {
         content: NotificationContent(
             id: 10,
             channelKey: 'basic_channel',
-            title: 'snapshot.docChanges.first.doc.id',
+            title: snapshot.docChanges.first.doc.id,
         ),
       );
     });
