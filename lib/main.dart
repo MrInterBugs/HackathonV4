@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar('Not Home'),
+      appBar: CustomAppBar('Home'),
       backgroundColor: Color(0xff2d2b2a),
       body: Center(child:Text('Center')),
       drawer: Hamburger(),
