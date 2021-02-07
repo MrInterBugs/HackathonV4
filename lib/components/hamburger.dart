@@ -26,38 +26,22 @@ class Hamburger extends StatelessWidget {
                       style: TextStyle(color: Color(0xfffe8019), fontSize: 35)),
                 ),
                 // Home
-                ListTile(
-                  title: Text('Home Page'),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                ),
-                // Teachers View
-
+                CustomListTile(title: 'Home Page', routeName: '/'),
                 CustomListTile(
                     title: 'Teachers View', routeName: '/teacherView'),
                 CustomListTile(
                     title: 'Student View', routeName: '/studentView'),
-                ListTile(
-                  title: Text('Messages'),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  title: Text('Timetable'),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                CustomListTile(title: 'Messages', routeName: ''),
+                CustomListTile(title: 'Timetable', routeName: ''),
                 // Logout Button
-                ListTile(
-                  title: Text('Logout'),
-                  onTap: () {
+                CustomListTile(
+                  title: 'Logout',
+                  routeName: '',
+                  stateMutations: () {
                     signOutGoogle();
                     SystemNavigator.pop();
                   },
-                ),
+                )
               ],
             ),
           ),
