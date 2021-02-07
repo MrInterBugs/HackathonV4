@@ -40,6 +40,7 @@ void main() async {
       '/teacherView': (context) => TeacherHome(),
       '/studentView': (context) => StudentView(),
       '/authenticate': (context) => Auth(),
+      '/teacherView/classView': (context) => ClassView(),
     },
   ));
 }

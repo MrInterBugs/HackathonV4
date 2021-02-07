@@ -12,7 +12,6 @@ class TeacherHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final className = List<String>.generate(5, (i) => "Class $i");
     final firestoreInstance = FirebaseFirestore.instance;
     CollectionReference classes = firestoreInstance.collection('classes');
 
@@ -28,10 +27,12 @@ class TeacherHome extends StatelessWidget {
           }
 
           return new Scaffold(
-            body: new ListView (
+            body: new ListView(
               children: snapshot.data.docs.map((DocumentSnapshot document) {
                 return new ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/teacherView/classView');
+                  },
                   child: new Text(document.data()['name']),
                 );
               }).toList(),
