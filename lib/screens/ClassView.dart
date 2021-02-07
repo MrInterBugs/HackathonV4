@@ -14,13 +14,23 @@ class ClassView extends StatefulWidget {
 class _ClassViewState extends State<ClassView> {
   @override
   Widget build(BuildContext context) {
-    final ClassViewArguments args = ModalRoute.of(context).settings.arguments;
+    final ClassViewArguments args = ModalRoute
+        .of(context)
+        .settings
+        .arguments;
     final firestoreInstance = FirebaseFirestore.instance;
-    CollectionReference classes = firestoreInstance.collection('classes');
+    CollectionReference classes = firestoreInstance.collection('classes').where('name', isEqualTo: args.classname);
 
-    return Scaffold(
-      appBar: CustomAppBar(args.classname),
-      body: Text('Test')
+    return new StreamBuilder<QuerySnapshot> (
+        stream: classes.snapshots(),
+        builder: (BuildContext buildContext, AsyncSnapshot<QuerySnapshot> snapshot) {
+          return Text('test');
+        }
+      // return Scaffold(
+      //   appBar: CustomAppBar(args.classname),
+      //   body: new FutureBuilder(builder: builder)
+      // );
+
     );
   }
 }
