@@ -1,8 +1,10 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/hamburger.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'SignIn.dart';
 
@@ -10,6 +12,20 @@ class StudentView extends StatelessWidget {
   StudentView({
     Key key,
   }) : super(key: key);
+
+  final username = name;
+  String currentTime;
+
+  Future<void> _getCurrentTime() async {
+    try {
+      final String result = await platform.invokeMethod('getCurrentTime');
+      currentTime = result;
+    } on PlatformException catch (e) {
+      currentTime = "Failed to get time: '${e.message}'.";
+    }
+  }
+
+  static const platform = const MethodChannel('com.rhulcsprojects.flutter_app/time');
 
   @override
   Widget build(BuildContext context) {
@@ -95,14 +111,31 @@ class StudentView extends StatelessWidget {
             pinBottom: true,
             fixedWidth: true,
             fixedHeight: true,
-            child: Text(
-              'I\'m here',
-              style: TextStyle(
-                fontFamily: 'Segoe UI',
-                fontSize: 36,
-                color: const Color(0xff000000),
+            child: InkWell(
+              onTap: () {
+                _getCurrentTime();
+                if(currentTime == null) {
+                  currentTime = "error";
+                }
+                FirebaseFirestore.instance
+                    .collection('register')
+                    .add({
+                      'full_name': username,
+                      'time': currentTime,
+                      'email': email,
+                    })
+                    .then((result) => print("success"))
+                    .catchError((err) => print(err));
+              },
+              child: Text(
+                'I\'m here 🏫',
+                style: TextStyle(
+                  fontFamily: 'Segoe UI',
+                  fontSize: 36,
+                  color: const Color(0xff000000),
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
           Pinned.fromSize(

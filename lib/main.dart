@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/hamburger.dart';
+import 'package:flutter_app/screens/Register.dart';
 import 'package:flutter_app/screens/ClassView.dart';
 import 'screens/StudentView.dart';
 import 'screens/TeacherHome.dart';
@@ -41,6 +42,7 @@ void main() async {
       '/teacherView': (context) => TeacherHome(),
       '/studentView': (context) => StudentView(),
       '/authenticate': (context) => Auth(),
+      '/register': (context) => Register(),
       ClassView.routeName: (context) => ClassView()
     },
   ));
