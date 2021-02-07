@@ -40,7 +40,7 @@ class TeacherHome extends StatelessWidget {
                   onPressed: () {
                     print(document.data()['name']);
                     Navigator.pushNamed(context, ClassView.routeName,
-                        arguments: ClassViewArguments(document.data()['name']));
+                        arguments: ClassViewArguments(document.data()['name'], document.id));
                   },
                   child: new Text(document.data()['name']),
                 );

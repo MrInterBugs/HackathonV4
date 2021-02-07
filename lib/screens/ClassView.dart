@@ -12,34 +12,41 @@ class ClassView extends StatefulWidget {
 }
 
 class _ClassViewState extends State<ClassView> {
+  String _status;
+
   @override
   Widget build(BuildContext context) {
     final ClassViewArguments args = ModalRoute
         .of(context)
         .settings
         .arguments;
+
     final firestoreInstance = FirebaseFirestore.instance;
-    Query classes = firestoreInstance.collection('classes').where('name', isEqualTo: args.classname);
+    DocumentReference classes = firestoreInstance.collection('classes').doc(
+        args.id);
 
-    // classes.snapshots().listen((querySnapshot) {
-    //   querySnapshot.docChanges.forEach((change) {
-    //
-    //   });
-    // });
+    classes.get().then((DocumentSnapshot snapshot) => {
+      _status = snapshot.data()['status']
+    });
 
-    return new StreamBuilder<QuerySnapshot> (
-        stream: classes.snapshots(),
-        builder: (BuildContext buildContext, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if(!snapshot.hasData) return new Text('Loading...');
+    classes.snapshots().listen((snapshot) {
+      setState(() {
+        classes.get().then((DocumentSnapshot snapshot) => {
+          _status = snapshot.get('status')
+        });
+      });
+    });
+
+    return new FutureBuilder<DocumentSnapshot> (
+        future: classes.get(),
+        builder: (BuildContext buildContext,
+            AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (!snapshot.hasData) return new Text('Loading...');
           return Scaffold(
-            body: new ListView(
-              children: snapshot.data.docs.map((DocumentSnapshot document) {
-                return new ListTile(
-                  title: new Text("Status"),
-                  subtitle: new Text(document['status']),
-                );
-              }).toList(),
-            )
+              body: ListTile(
+                title: new Text("Status"),
+                subtitle: new Text('$_status'),
+              )
           );
         }
     );
@@ -48,6 +55,7 @@ class _ClassViewState extends State<ClassView> {
 
 class ClassViewArguments {
   final String classname;
+  final String id;
 
-  ClassViewArguments(this.classname);
+  ClassViewArguments(this.classname, this.id);
 }
