@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/components/CustomAppBar.dart';
+import 'package:flutter_app/components/hamburger.dart';
 import 'screens/studentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
@@ -27,6 +29,11 @@ void main() {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text('centered thingy'));
+    return Scaffold(
+      appBar: CustomAppBar('Not Home'),
+      backgroundColor: Color(0xff2d2b2a),
+      body: Center(child:Text('Center')),
+      drawer: Hamburger(),
+    );
   }
 }

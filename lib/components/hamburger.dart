@@ -20,10 +20,8 @@ class Hamburger extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Menu'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+              child: Text('Menu', style:TextStyle(color: Color(0xfffe8019),fontSize:35)),
+              decoration: BoxDecoration(color: Color(0xff282828)),
             ),
             // Home
             ListTile(
