@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/hamburger.dart';
-import 'screens/studentView.dart';
+import 'screens/StudentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar('Not Home'),
+      appBar: CustomAppBar('Home'),
       backgroundColor: Color(0xff2d2b2a),
       body: Center(child:Text('Center')),
       drawer: Hamburger(),
