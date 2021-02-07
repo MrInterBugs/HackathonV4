@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
@@ -11,13 +12,13 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firestoreInstance = FirebaseFirestore.instance;
-    CollectionReference classes = firestoreInstance.collection('register');
-
+    CollectionReference register = firestoreInstance.collection('register');
+    
     return Scaffold(
         appBar: CustomAppBar('Register View'),
         drawer: Hamburger(),
         body: new StreamBuilder<QuerySnapshot>(
-            stream: classes.snapshots(),
+            stream: register.snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasError) {
@@ -26,6 +27,17 @@ class Register extends StatelessWidget {
 
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Text("Loading");
+              }
+
+              if (snapshot.hasData) {
+                AwesomeNotifications().createNotification(
+                  content: NotificationContent(
+                      id: 10,
+                      channelKey: 'basic_channel',
+                      title: 'Pupil has just registered.',
+                      body: ('test')
+                  ),
+                );
               }
 
               return new Scaffold(
