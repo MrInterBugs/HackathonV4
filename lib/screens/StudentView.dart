@@ -1,7 +1,10 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/hamburger.dart';
+
+import 'SignIn.dart';
 
 class StudentView extends StatelessWidget {
   StudentView({
@@ -109,14 +112,26 @@ class StudentView extends StatelessWidget {
             pinBottom: true,
             fixedWidth: true,
             fixedHeight: true,
-            child: Text(
+            child: InkWell(
+              onTap: () {
+                AwesomeNotifications().createNotification(
+                    content: NotificationContent(
+                        id: 10,
+                        channelKey: 'basic_channel',
+                        title: '✋',
+                        body: (name + ' would like to ask a question.')
+                    ),
+                );
+              },
+              child: Text(
               '✋',
               style: TextStyle(
-                fontFamily: 'Segoe UI',
-                fontSize: 112,
-                color: const Color(0xffffffff),
+              fontFamily: 'Segoe UI',
+              fontSize: 112,
+              color: const Color(0xffffffff),
               ),
               textAlign: TextAlign.center,
+              ),
             ),
           ),
           Pinned.fromSize(
