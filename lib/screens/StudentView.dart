@@ -30,15 +30,7 @@ class StudentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    firestore.collection('notifications').snapshots().listen((QuerySnapshot snapshot) {
-      AwesomeNotifications().createNotification(
-        content: NotificationContent(
-            id: 10,
-            channelKey: 'basic_channel',
-            title: snapshot.docs.first.data()['notification'],
-        ),
-      );
-    });
+    CollectionReference notifications = firestore.collection('notifications');
 
     return Scaffold(
       appBar: CustomAppBar('Student View'),
@@ -220,6 +212,29 @@ class StudentView extends StatelessWidget {
               ),
             ),
           ),
+          new StreamBuilder<QuerySnapshot>(
+              stream: notifications.snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("Loading");
+                }
+
+                if (snapshot.hasData) {
+                  AwesomeNotifications().createNotification(
+                    content: NotificationContent(
+                        id: 10,
+                        channelKey: 'basic_channel',
+                        title: 'Pupil has just registered.',
+                        body: ('test')
+                    ),
+                  );
+                // ignore: missing_return
+                }
         ],
       ),
     );
