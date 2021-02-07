@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/Hamburger.dart';
@@ -17,7 +18,16 @@ class TeacherHome extends StatelessWidget {
           itemCount: className.length,
           itemBuilder: (context, index) {
             return ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                AwesomeNotifications().createNotification(
+                    content: NotificationContent(
+                        id: 10,
+                        channelKey: 'basic_channel',
+                        title: 'Class notification!',
+                        body: 'Break is over time to come back to lesson.'
+                    )
+                );
+              },
               child: Text('${className[index]}'),
             );
           },

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/components/hamburger.dart';
-import 'package:flutter_emoji/flutter_emoji.dart';
 
 import 'SignIn.dart';
 
@@ -70,7 +69,6 @@ class UserInfo extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-
                     'Go to app 👍',
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
