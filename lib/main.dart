@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/hamburger.dart';
-import 'screens/studentView.dart';
+import 'screens/StudentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
 import 'package:firebase_core/firebase_core.dart';
