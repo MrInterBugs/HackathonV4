@@ -229,11 +229,14 @@ class StudentView extends StatelessWidget {
                     content: NotificationContent(
                         id: 10,
                         channelKey: 'basic_channel',
-                        title: 'Pupil has just registered.',
+                        title: 'Teacher wants you to come back to class.',
                         body: ('test')),
                   );
-                  // ignore: missing_return
                 }
+                return new Scaffold(
+                  body: new ListView (
+                  ),
+                );
               })
         ],
       ),
