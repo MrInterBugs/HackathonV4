@@ -25,7 +25,8 @@ class StudentView extends StatelessWidget {
     }
   }
 
-  static const platform = const MethodChannel('com.rhulcsprojects.flutter_app/time');
+  static const platform =
+      const MethodChannel('com.rhulcsprojects.flutter_app/time');
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +118,7 @@ class StudentView extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 _getCurrentTime();
-                if(currentTime == null) {
+                if (currentTime == null) {
                   currentTime = "error";
                 }
                 FirebaseFirestore.instance
@@ -151,22 +152,21 @@ class StudentView extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 AwesomeNotifications().createNotification(
-                    content: NotificationContent(
-                        id: 10,
-                        channelKey: 'basic_channel',
-                        title: '✋',
-                        body: (name + ' would like to ask a question.')
-                    ),
+                  content: NotificationContent(
+                      id: 10,
+                      channelKey: 'basic_channel',
+                      title: '✋',
+                      body: (name + ' would like to ask a question.')),
                 );
               },
               child: Text(
-              '✋',
-              style: TextStyle(
-              fontFamily: 'Segoe UI',
-              fontSize: 112,
-              color: const Color(0xffffffff),
-              ),
-              textAlign: TextAlign.center,
+                '✋',
+                style: TextStyle(
+                  fontFamily: 'Segoe UI',
+                  fontSize: 112,
+                  color: const Color(0xffffffff),
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -230,11 +230,11 @@ class StudentView extends StatelessWidget {
                         id: 10,
                         channelKey: 'basic_channel',
                         title: 'Pupil has just registered.',
-                        body: ('test')
-                    ),
+                        body: ('test')),
                   );
-                // ignore: missing_return
+                  // ignore: missing_return
                 }
+              })
         ],
       ),
     );
