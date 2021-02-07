@@ -23,7 +23,7 @@ class TeacherHome extends StatelessWidget {
                     content: NotificationContent(
                         id: 10,
                         channelKey: 'basic_channel',
-                        title: 'Class notification!',
+                        title: '⏰ Class notification! ⏰',
                         body: 'Break is over time to come back to lesson.'
                     )
                 );
