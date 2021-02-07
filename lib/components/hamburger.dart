@@ -33,6 +33,8 @@ class Hamburger extends StatelessWidget {
                     title: 'Student View', routeName: '/studentView'),
                 CustomListTile(title: 'Messages', routeName: ''),
                 CustomListTile(title: 'Timetable', routeName: ''),
+                CustomListTile(
+                    title: 'Register', routeName: '/register'),
                 // Logout Button
                 CustomListTile(
                   title: 'Logout',
