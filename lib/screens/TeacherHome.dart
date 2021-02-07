@@ -2,6 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/Hamburger.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TeacherHome extends StatelessWidget {
   TeacherHome({
@@ -11,27 +13,30 @@ class TeacherHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final className = List<String>.generate(5, (i) => "Class $i");
+    final firestoreInstance = FirebaseFirestore.instance;
+    CollectionReference classes = firestoreInstance.collection('classes');
 
-    return Scaffold(
-        appBar: CustomAppBar( 'Teacher View' ),
-        body: ListView.builder(
-          itemCount: className.length,
-          itemBuilder: (context, index) {
-            return ElevatedButton(
-              onPressed: () {
-                AwesomeNotifications().createNotification(
-                    content: NotificationContent(
-                        id: 10,
-                        channelKey: 'basic_channel',
-                        title: '⏰ Class notification! ⏰',
-                        body: 'Break is over time to come back to lesson.'
-                    )
+    return new StreamBuilder<QuerySnapshot>(
+        stream: classes.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text("Loading");
+          }
+
+          return new Scaffold(
+            body: new ListView (
+              children: snapshot.data.docs.map((DocumentSnapshot document) {
+                return new ElevatedButton(
+                  onPressed: () {},
+                  child: new Text(document.data()['name']),
                 );
-              },
-              child: Text('${className[index]}'),
-            );
-          },
-        ),
-        drawer: Hamburger());
+              }).toList(),
+            ),
+          );
+        });
   }
 }
