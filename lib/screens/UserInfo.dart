@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/components/hamburger.dart';
+import 'package:flutter_emoji/flutter_emoji.dart';
 
 import 'SignIn.dart';
 
@@ -23,13 +25,6 @@ class UserInfo extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                  imageUrl,
-                ),
-                radius: 60,
-                backgroundColor: Colors.transparent,
-              ),
               SizedBox(height: 40),
               Text(
                 'NAME',
@@ -45,7 +40,14 @@ class UserInfo extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                  imageUrl,
+                ),
+                radius: 100,
+              ),
+              SizedBox(height: 30),
               Text(
                 'EMAIL',
                 style: TextStyle(
@@ -68,14 +70,33 @@ class UserInfo extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Go to app',
+
+                    'Go to app 👍',
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
                 ),
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-              )
+              ),
+              SizedBox(height: 40),
+              RaisedButton(
+                onPressed: () {
+                  signOutGoogle();
+                  SystemNavigator.pop();
+                },
+                color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Not you? Exit ❌',
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
+                ),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+              ),
             ],
           ),
 
