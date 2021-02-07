@@ -34,11 +34,34 @@ class StudentView extends StatelessWidget {
     CollectionReference notifications = firestore.collection('notifications');
 
     return Scaffold(
-      appBar: CustomAppBar('Student View'),
-      drawer: Hamburger(),
-      backgroundColor: const Color(0xff1d1f27),
       body: Stack(
         children: <Widget>[
+          new StreamBuilder<QuerySnapshot>(
+              stream: notifications.snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("Loading");
+                }
+
+                if (snapshot.hasData) {
+                  AwesomeNotifications().createNotification(
+                    content: NotificationContent(
+                        id: 10,
+                        channelKey: 'basic_channel',
+                        title: 'Teacher wants you to come back to class.',
+                        body: ('test')),
+                  );
+                }
+                return new Scaffold(
+                  body: new ListView (
+                  ),
+                );
+              }),
           Pinned.fromSize(
             bounds: Rect.fromLTWH(136.0, 379.0, 259.0, 56.0),
             size: Size(412.0, 870.0),
@@ -179,7 +202,7 @@ class StudentView extends StatelessWidget {
               'This is a message',
               style: TextStyle(
                 fontFamily: 'Segoe UI',
-                fontSize: 36,
+                fontSize: 20,
                 color: const Color(0xff000000),
               ),
               textAlign: TextAlign.center,
@@ -194,7 +217,7 @@ class StudentView extends StatelessWidget {
               'This is a reply.',
               style: TextStyle(
                 fontFamily: 'Segoe UI',
-                fontSize: 36,
+                fontSize: 20,
                 color: const Color(0xff000000),
               ),
               textAlign: TextAlign.center,
@@ -212,34 +235,11 @@ class StudentView extends StatelessWidget {
               ),
             ),
           ),
-          new StreamBuilder<QuerySnapshot>(
-              stream: notifications.snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Something went wrong');
-                }
-
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text("Loading");
-                }
-
-                if (snapshot.hasData) {
-                  AwesomeNotifications().createNotification(
-                    content: NotificationContent(
-                        id: 10,
-                        channelKey: 'basic_channel',
-                        title: 'Teacher wants you to come back to class.',
-                        body: ('test')),
-                  );
-                }
-                return new Scaffold(
-                  body: new ListView (
-                  ),
-                );
-              })
         ],
       ),
+      appBar: CustomAppBar('Student View'),
+      drawer: Hamburger(),
+      backgroundColor: const Color(0xff1d1f27),
     );
   }
 }
