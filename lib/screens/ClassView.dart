@@ -55,6 +55,7 @@ class _ClassViewState extends State<ClassView> {
                         })
                         .then((result) => print("success"))
                         .catchError((err) => print(err));
+                    snapshot.data.data().update("status", (value) => "active");
                   },
                   child: Text("Start Class")
               ),
