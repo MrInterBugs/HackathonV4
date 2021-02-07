@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomAppBar.dart';
+import 'package:flutter_app/components/hamburger.dart';
 
 class ClassView extends StatefulWidget {
   static const routeName = '/teacherView/classView';
@@ -16,40 +17,49 @@ class _ClassViewState extends State<ClassView> {
 
   @override
   Widget build(BuildContext context) {
-    final ClassViewArguments args = ModalRoute
-        .of(context)
-        .settings
-        .arguments;
+    final ClassViewArguments args = ModalRoute.of(context).settings.arguments;
 
     final firestoreInstance = FirebaseFirestore.instance;
-    DocumentReference classes = firestoreInstance.collection('classes').doc(
-        args.id);
+    DocumentReference classes =
+        firestoreInstance.collection('classes').doc(args.id);
 
-    classes.get().then((DocumentSnapshot snapshot) => {
-      _status = snapshot.data()['status']
-    });
+    classes.get().then(
+        (DocumentSnapshot snapshot) => {_status = snapshot.data()['status']});
 
     classes.snapshots().listen((snapshot) {
       setState(() {
-        classes.get().then((DocumentSnapshot snapshot) => {
-          _status = snapshot.get('status')
-        });
+        classes.get().then(
+            (DocumentSnapshot snapshot) => {_status = snapshot.get('status')});
       });
     });
 
-    return new FutureBuilder<DocumentSnapshot> (
+    return new FutureBuilder<DocumentSnapshot>(
         future: classes.get(),
         builder: (BuildContext buildContext,
             AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (!snapshot.hasData) return new Text('Loading...');
           return Scaffold(
-              body: ListTile(
+            appBar: CustomAppBar('Teachers'),
+            drawer: Hamburger(),
+            body: Column(children: <Widget>[
+              ListTile(
                 title: new Text("Status"),
                 subtitle: new Text('$_status'),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    FirebaseFirestore.instance
+                        .collection('notification')
+                        .add({
+                          'notification': 'Class is starting!',
+                        })
+                        .then((result) => print("success"))
+                        .catchError((err) => print(err));
+                  },
+                  child: Text("Start Class"))
+            ]),
           );
-        }
-    );
+        });
   }
 }
 
