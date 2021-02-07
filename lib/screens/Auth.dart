@@ -11,7 +11,7 @@ class Auth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff121212),
+      backgroundColor: const Color(0xff2d2b2a),
       body: Stack(
         children: <Widget>[
           // Welcome Text
@@ -27,14 +27,14 @@ class Auth extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 52,
-                color: const Color(0xffffffff),
+                color: const Color(0xffebdbb2),
               ),
               textAlign: TextAlign.center,
             ),
           ),
-          // First button rect
+          // Login Button
           Pinned.fromSize(
-            // position and width stylin
+            // position and width styling
             bounds: Rect.fromLTWH(17.8, 591.7, 376.3, 74.3),
             size: Size(412.0, 870.0),
             pinLeft: true,
@@ -61,7 +61,7 @@ class Auth extends StatelessWidget {
                 width: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(96.0),
-                  color: const Color(0xff3700b3),
+                  color: const Color(0xfffe8019),
                 ),
                 child: Text(
                   'Register',

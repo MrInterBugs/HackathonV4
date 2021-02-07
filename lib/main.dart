@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'components/hamburger.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
+import 'package:flutter_app/components/CustomAppBar.dart';
+import 'package:flutter_app/components/hamburger.dart';
 import 'screens/studentView.dart';
 import 'screens/TeacherHome.dart';
 import 'screens/Auth.dart';
@@ -27,9 +30,10 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Page"),),
-        body: Text('centered thingy'),
-        drawer: Hamburger(),
+      appBar: CustomAppBar('Not Home'),
+      backgroundColor: Color(0xff2d2b2a),
+      body: Center(child:Text('Center')),
+      drawer: Hamburger(),
     );
   }
 }

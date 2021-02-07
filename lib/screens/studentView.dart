@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
+import 'package:flutter_app/components/CustomAppBar.dart';
+import 'package:flutter_app/components/hamburger.dart';
 
 class StudentView extends StatelessWidget {
   StudentView({
@@ -9,7 +11,9 @@ class StudentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff121212),
+      appBar: CustomAppBar('Student View'),
+      drawer: Hamburger(),
+      backgroundColor: const Color(0xff1d1f27),
       body: Stack(
         children: <Widget>[
           Pinned.fromSize(
