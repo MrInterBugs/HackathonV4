@@ -82,15 +82,7 @@ class Auth extends StatelessWidget {
             pinLeft: true,
             pinRight: true,
             fixedHeight: true,
-            child: Text(
-              'Insert random Logo (microphone svg?)',
-              style: TextStyle(
-                fontFamily: 'Segoe UI',
-                fontSize: 36,
-                color: const Color(0xff707070),
-              ),
-              textAlign: TextAlign.center,
-            ),
+            child: Image(image: AssetImage('assets/logo.png')),
           ),
           // Hint text
           Pinned.fromSize(

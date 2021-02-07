@@ -10,7 +10,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 
 void main() async {
   AwesomeNotifications().initialize(
-    // set the icon to null if you want to use the default app icon
+      // set the icon to null if you want to use the default app icon
       'resource://drawable/test',
       [
         NotificationChannel(
@@ -18,10 +18,8 @@ void main() async {
             channelName: 'Basic notifications',
             channelDescription: 'Notification channel for basic tests',
             defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white
-        )
-      ]
-  );
+            ledColor: Colors.white)
+      ]);
   AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
     if (!isAllowed) {
       // Insert here your friendly dialog box before call the request method
@@ -37,6 +35,7 @@ void main() async {
     // on the FirstScreen widget.
     //
     initialRoute: isAuthenticated ? '/' : '/authenticate',
+
     routes: {
       '/': (context) => Home(),
       '/teacherView': (context) => TeacherHome(),
@@ -53,11 +52,11 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar('Home'),
-      backgroundColor: Color(0xff2d2b2a),
-      body: Center(child:Text('Center')),
+      body: Center(
+          child: Container(
+        child: Text('Center'),
+      )),
       drawer: Hamburger(),
     );
   }
 }
-
-
