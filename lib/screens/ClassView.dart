@@ -19,18 +19,29 @@ class _ClassViewState extends State<ClassView> {
         .settings
         .arguments;
     final firestoreInstance = FirebaseFirestore.instance;
-    CollectionReference classes = firestoreInstance.collection('classes').where('name', isEqualTo: args.classname);
+    Query classes = firestoreInstance.collection('classes').where('name', isEqualTo: args.classname);
+
+    // classes.snapshots().listen((querySnapshot) {
+    //   querySnapshot.docChanges.forEach((change) {
+    //
+    //   });
+    // });
 
     return new StreamBuilder<QuerySnapshot> (
         stream: classes.snapshots(),
         builder: (BuildContext buildContext, AsyncSnapshot<QuerySnapshot> snapshot) {
-          return Text('test');
+          if(!snapshot.hasData) return new Text('Loading...');
+          return Scaffold(
+            body: new ListView(
+              children: snapshot.data.docs.map((DocumentSnapshot document) {
+                return new ListTile(
+                  title: new Text("Status"),
+                  subtitle: new Text(document['status']),
+                );
+              }).toList(),
+            )
+          );
         }
-      // return Scaffold(
-      //   appBar: CustomAppBar(args.classname),
-      //   body: new FutureBuilder(builder: builder)
-      // );
-
     );
   }
 }
