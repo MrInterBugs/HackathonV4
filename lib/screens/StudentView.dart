@@ -29,6 +29,17 @@ class StudentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    firestore.collection('notifications').snapshots().listen((QuerySnapshot snapshot) {
+      AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'snapshot.docChanges.first.doc.id',
+        ),
+      );
+    });
+
     return Scaffold(
       appBar: CustomAppBar('Student View'),
       drawer: Hamburger(),

@@ -8,7 +8,6 @@ import 'package:flutter_app/screens/ClassView.dart';
 
 import '../components/CustomAppBar.dart';
 import '../components/hamburger.dart';
-import '../components/hamburger.dart';
 
 class TeacherHome extends StatelessWidget {
   TeacherHome({
