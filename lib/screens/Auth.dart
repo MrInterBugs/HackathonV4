@@ -64,7 +64,7 @@ class Auth extends StatelessWidget {
                   color: const Color(0xfffe8019),
                 ),
                 child: Text(
-                  'Register',
+                  'Login',
                   style: TextStyle(
                     fontFamily: 'Segoe UI',
                     fontSize: 54,

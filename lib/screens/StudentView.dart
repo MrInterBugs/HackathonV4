@@ -184,7 +184,7 @@ class StudentView extends StatelessWidget {
             fixedWidth: true,
             fixedHeight: true,
             child: Text(
-              'asdfasdf',
+              'This is a message',
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 36,
@@ -199,7 +199,7 @@ class StudentView extends StatelessWidget {
             fixedWidth: true,
             fixedHeight: true,
             child: Text(
-              'asdfasdf',
+              'This is a reply.',
               style: TextStyle(
                 fontFamily: 'Segoe UI',
                 fontSize: 36,
