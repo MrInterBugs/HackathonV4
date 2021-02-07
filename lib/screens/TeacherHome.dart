@@ -4,6 +4,7 @@ import 'package:flutter_app/components/CustomAppBar.dart';
 import 'package:flutter_app/components/Hamburger.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_app/screens/ClassView.dart';
 
 class TeacherHome extends StatelessWidget {
   TeacherHome({
@@ -31,7 +32,9 @@ class TeacherHome extends StatelessWidget {
               children: snapshot.data.docs.map((DocumentSnapshot document) {
                 return new ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/teacherView/classView');
+                    print(document.data()['name']);
+                    Navigator.pushNamed(context, ClassView.routeName,
+                        arguments: ClassViewArguments(document.data()['name']));
                   },
                   child: new Text(document.data()['name']),
                 );
