@@ -57,7 +57,21 @@ class _ClassViewState extends State<ClassView> {
                         .catchError((err) => print(err));
                     snapshot.data.data().update("status", (value) => "active");
                   },
-                  child: Text("Start Class"))
+                  child: Text("Start Class")
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    FirebaseFirestore.instance
+                        .collection('notification')
+                        .add({
+                      'notification': 'Class is ending!',
+                    })
+                        .then((result) => print("success"))
+                        .catchError((err) => print(err));
+                    snapshot.data.data().update("status", (value) => "inactive");
+                  },
+                  child: Text("End Class")
+              )
             ]),
           );
         });
