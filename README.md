@@ -59,4 +59,4 @@ name = user.displayName;
 ## Acknowledgements
 * [**Flutter**](https://flutter.dev/docs)
 * [**Awesome_Notifications**](https://github.com/rafaelsetragni/awesome_notifications)
-* `[**Firebase**](https://firebase.google.com/)
+* [**Firebase**](https://firebase.google.com/)
